@@ -1,6 +1,6 @@
+import clsx from 'clsx'
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
@@ -11,16 +11,17 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
 import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
-import logoStarbucks from '@/images/logos/starbucks.svg'
+import logoFaceIt from '@/images/logos/faceit.svg'
+import logoBitfinex from '@/images/logos/bitfinex.svg'
+import logoGucci from '@/images/logos/gucci.svg'
+import logoCapgemini from '@/images/logos/capgemini.svg'
 import image1 from '@/images/photos/image-1.jpg'
 import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
+import { getAllArticles, type ArticleWithSlug } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -187,35 +188,42 @@ function Role({ role }: { role: Role }) {
 function Resume() {
   let resume: Array<Role> = [
     {
-      company: 'Planetaria',
-      title: 'CEO',
-      logo: logoPlanetaria,
-      start: '2019',
+      company: 'Bitfinex',
+      title: 'Senior Software Engineer',
+      logo: logoBitfinex,
+      start: '2023',
       end: {
         label: 'Present',
         dateTime: new Date().getFullYear().toString(),
       },
     },
     {
-      company: 'Airbnb',
-      title: 'Product Designer',
-      logo: logoAirbnb,
-      start: '2014',
-      end: '2019',
+      company: 'FaceIt',
+      title: 'Senior Software Engineer',
+      logo: logoFaceIt,
+      start: '2022',
+      end: '2023',
     },
     {
-      company: 'Facebook',
+      company: 'Gucci',
+      title: 'Full Stack Engineer',
+      logo: logoGucci,
+      start: '2022',
+      end: '2023',
+    },
+    {
+      company: 'Amaris',
       title: 'iOS Software Engineer',
       logo: logoFacebook,
-      start: '2011',
-      end: '2014',
+      start: '2019',
+      end: '2022',
     },
     {
-      company: 'Starbucks',
-      title: 'Shift Supervisor',
-      logo: logoStarbucks,
-      start: '2008',
-      end: '2011',
+      company: 'Capgemini',
+      title: 'Consultant',
+      logo: logoCapgemini,
+      start: '2016',
+      end: '2019',
     },
   ]
 
@@ -273,32 +281,31 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software designer, founder, and amateur astronaut.
+            Software developer, founder, and amateur astronaut.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Spencer, a software designer and entrepreneur based in New York
-            City. I’m the founder and CEO of Planetaria, where we develop
-            technologies that empower regular people to explore space on their
-            own terms.
+            I’m Luka, a software developer and entrepreneur based in Italy. I’m
+            the founder and CEO of Planetaria, where we develop technologies
+            that empower regular people to explore space on their own terms.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
               href="https://twitter.com"
-              aria-label="Follow on Twitter"
+              aria-label="Follow on X"
               icon={TwitterIcon}
             />
-            <SocialLink
+            {/*  <SocialLink
               href="https://instagram.com"
               aria-label="Follow on Instagram"
               icon={InstagramIcon}
-            />
+            /> */}
             <SocialLink
-              href="https://github.com"
+              href="https://github.com/Lukapetro"
               aria-label="Follow on GitHub"
               icon={GitHubIcon}
             />
             <SocialLink
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/lukapetro/"
               aria-label="Follow on LinkedIn"
               icon={LinkedInIcon}
             />
