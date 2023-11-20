@@ -9,7 +9,8 @@ import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
-import avatarImage from '@/images/avatar.png'
+import logoTextDark from '@/images/logos/z3n-text-dark.svg'
+import logoTextLight from '@/images/logos/z3n-text-light.svg'
 
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -188,9 +189,9 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
 }
 
 function ThemeToggle() {
-  let { resolvedTheme, setTheme } = useTheme()
-  let otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
-  let [mounted, setMounted] = useState(false)
+  const { resolvedTheme, setTheme } = useTheme()
+  const otherTheme = resolvedTheme === 'dark' ? 'light' : 'dark'
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setMounted(true)
@@ -237,6 +238,7 @@ function Avatar({
 }: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
   large?: boolean
 }) {
+  const { resolvedTheme } = useTheme()
   return (
     <Link
       href="/"
@@ -245,12 +247,12 @@ function Avatar({
       {...props}
     >
       <Image
-        src={avatarImage}
+        src={resolvedTheme === 'light' ? logoTextLight : logoTextDark}
         alt=""
         sizes={large ? '4rem' : '2.25rem'}
         className={clsx(
-          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
-          large ? 'h-16 w-16' : 'h-9 w-9',
+          ' object-fit bg-white dark:bg-zinc-900',
+          large ? '' : 'h-9 w-9',
         )}
         priority
       />
