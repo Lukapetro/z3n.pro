@@ -90,11 +90,12 @@ export default function About() {
               physically.
             </p>
             <p>
-              I spent the next few summers indoors working on a rocket design,
-              while I recovered from the multiple surgeries it took to fix my
-              badly broken legs. It took nine iterations, but when I was 15 I
-              sent my dad’s Blackberry into orbit and was able to transmit a
-              photo back down to our family computer from space.
+              In the world of coding, I’m always on the hunt for the next big
+              thing. Keeping up with the latest tech trends isn&apos;t just a
+              hobby for me; it’s a necessity. I love cracking the code on new
+              languages and technologies, constantly pushing the boundaries of
+              what’s possible in programming. It&apos;s this passion for
+              innovation that keeps my work fresh and exciting.
             </p>
             <p>
               Above all, my world revolves around spending quality time with my
