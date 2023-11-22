@@ -83,6 +83,19 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+function ArrowRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
+      <path
+        d="M7.25 4.75L10.75 8m0 0-3.5 3.25M10.75 8H2.25"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
     <Card as="article">
@@ -238,10 +251,17 @@ function Resume() {
           <Role key={roleIndex} role={role} />
         ))}
       </ol>
-      <Button href="#" variant="secondary" className="group mt-6 w-full">
-        Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </Button>
+
+      <a
+        href="https://read.cv/lukapetro"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button variant="secondary" className="group mt-6 w-full">
+          Take a look at the CV
+          <ArrowRightIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        </Button>
+      </a>
     </div>
   )
 }
@@ -281,24 +301,20 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            Software developer, founder, and amateur astronaut.
+            Developer, Explorer & Adventure Seeker
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Luka, a software developer and entrepreneur based in Italy. I’m
-            the founder and CEO of Planetaria, where we develop technologies
-            that empower regular people to explore space on their own terms.
+            Hey there, I&apos;m Luka from Italy – a software developer by trade
+            and an enthusiast of life&apos;s many journeys. Leading the way in
+            tech with a zest for finance, fitness, and fun, I&apos;m all about
+            transforming complex code into real-world magic.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
-              href="https://twitter.com"
+              href="https://twitter.com/lukapetro_"
               aria-label="Follow on X"
               icon={TwitterIcon}
             />
-            {/*  <SocialLink
-              href="https://instagram.com"
-              aria-label="Follow on Instagram"
-              icon={InstagramIcon}
-            /> */}
             <SocialLink
               href="https://github.com/Lukapetro"
               aria-label="Follow on GitHub"
