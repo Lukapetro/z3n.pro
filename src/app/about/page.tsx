@@ -25,13 +25,14 @@ function SocialLink({
 }) {
   return (
     <li className={clsx(className, 'flex')}>
-      <Link
+      <a
         href={href}
+        target="_blank"
         className="group flex text-sm font-medium text-zinc-800 transition hover:text-orange-500 dark:text-zinc-200 dark:hover:text-orange-500"
       >
         <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-orange-500" />
         <span className="ml-4">{children}</span>
-      </Link>
+      </a>
     </li>
   )
 }
@@ -50,7 +51,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'I’m Spencer Sharp. I live in New York City, where I design the future.',
+    'I’m Luka Petrovic, blending la dolce vita with lines of code to create digital magic',
 }
 
 export default function About() {
@@ -69,8 +70,8 @@ export default function About() {
         </div>
         <div className="lg:order-first lg:row-span-2">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-            I’m Spencer Sharp. I live in New York City, where I design the
-            future.
+            Greetings from Italy! I&apos;m Luka Petrovic, blending la dolce vita
+            with lines of code to create digital magic
           </h1>
           <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
             <p>
@@ -112,15 +113,19 @@ export default function About() {
             <SocialLink href="#" icon={GitHubIcon} className="mt-4">
               Follow on GitHub
             </SocialLink>
-            <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
+            <SocialLink
+              href="https://www.linkedin.com/in/lukapetro/"
+              icon={LinkedInIcon}
+              className="mt-4"
+            >
               Follow on LinkedIn
             </SocialLink>
             <SocialLink
-              href="mailto:spencer@planetaria.tech"
+              href="mailto:lucapetro93@gmail.com"
               icon={MailIcon}
               className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
             >
-              spencer@planetaria.tech
+              lucapetro93@gmail.com
             </SocialLink>
           </ul>
         </div>
