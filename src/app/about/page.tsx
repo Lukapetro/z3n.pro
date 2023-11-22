@@ -1,7 +1,6 @@
+import clsx from 'clsx'
 import { type Metadata } from 'next'
 import Image from 'next/image'
-import Link from 'next/link'
-import clsx from 'clsx'
 
 import { Container } from '@/components/Container'
 import {
@@ -10,7 +9,7 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from '@/components/SocialIcons'
-import portraitImage from '@/images/portrait.jpg'
+import portraitImage from '@/images/portrait.png'
 
 function SocialLink({
   className,
