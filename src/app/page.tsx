@@ -11,7 +11,7 @@ import {
   LinkedInIcon,
   TwitterIcon,
 } from '@/components/SocialIcons'
-import logoFacebook from '@/images/logos/facebook.svg'
+import logoFacebook from '@/images/logos/cosmos.svg'
 import logoFaceIt from '@/images/logos/faceit.svg'
 import logoBitfinex from '@/images/logos/bitfinex.svg'
 import logoGucci from '@/images/logos/gucci.svg'
