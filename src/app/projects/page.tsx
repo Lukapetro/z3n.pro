@@ -4,46 +4,51 @@ import Image from 'next/image'
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoAnimaginary from '@/images/logos/animaginary.svg'
-import logoCosmos from '@/images/logos/cosmos.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
-import logoOpenShuttle from '@/images/logos/open-shuttle.svg'
+//import logoMemories from '@/images/logos/memories.png'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
+import logoSunny from '@/images/logos/sunny-logo.png'
 
 const projects = [
   {
+    name: 'Sunny',
+    description:
+      'An app for renting and sharing beach umbrellas via a secondary market.',
+    link: { href: '#', label: 'github.com' },
+    logo: logoSunny,
+  },
+  /*   {
+    name: 'Memories',
+    description:
+      'Memories is a web application where users can create photo albums, upload pictures, and share album links with friends.',
+    link: { href: '#', label: 'github.com' },
+    logo: logoMemories,
+  }, */
+  {
     name: 'CercaEasy',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
+      'Find the best candidates for your job openings. Find the best job opportunities for your career.',
+    link: { href: 'https://www.cercaeasy.app/', label: 'cercaeasy.app' },
     logo: logoPlanetaria,
   },
   {
     name: 'Twin Yield',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
+      'High performance trading algorithm for stock market. Based on copy trading.',
+    link: {
+      href: 'https://github.com/Lukapetro/twin-yield-client',
+      label: 'github.com',
+    },
     logo: logoAnimaginary,
   },
   {
     name: 'Gymless',
-    description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
+    description: 'Outdoor fitness app, train anywhere, anytime, with anyone.',
+    link: {
+      href: 'https://github.com/Lukapetro/gymlesswebapp',
+      label: 'github.com',
+    },
     logo: logoHelioStream,
-  },
-  {
-    name: 'cosmOS',
-    description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoCosmos,
-  },
-  {
-    name: 'OpenShuttle',
-    description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoOpenShuttle,
   },
 ]
 
