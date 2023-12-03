@@ -5,7 +5,6 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import logoAnimaginary from '@/images/logos/animaginary.svg'
 import logoHelioStream from '@/images/logos/helio-stream.svg'
-//import logoMemories from '@/images/logos/memories.png'
 import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoSunny from '@/images/logos/sunny-logo.png'
 
@@ -17,13 +16,6 @@ const projects = [
     link: { href: '#', label: 'github.com' },
     logo: logoSunny,
   },
-  /*   {
-    name: 'Memories',
-    description:
-      'Memories is a web application where users can create photo albums, upload pictures, and share album links with friends.',
-    link: { href: '#', label: 'github.com' },
-    logo: logoMemories,
-  }, */
   {
     name: 'CercaEasy',
     description:
