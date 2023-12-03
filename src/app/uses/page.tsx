@@ -53,10 +53,12 @@ export default function Uses() {
             single time, even under the incredibly heavy loads I put it through
             with our various launch simulations.
           </Tool>
-          <Tool title="Apple Pro Display XDR (Standard Glass)">
-            The only display on the market if you want something HiDPI and
-            bigger than 27”. When you’re working at planetary scale, every pixel
-            you can get counts.
+          <Tool title="Samsung Odyssey OLED G9">
+            The Samsung Odyssey OLED G9 is a developer&apos;s dream: a massive,
+            ultra-wide monitor with sharp HiDPI resolution, perfect for coding,
+            debugging, and design. Bigger than 27 inches, it&apos;s like a
+            command center for conquering code and crafting worlds in
+            pixel-perfect detail.
           </Tool>
           <Tool title="IBM Model M SSK Industrial Keyboard">
             They don’t make keyboards the way they used to. I buy these any time
