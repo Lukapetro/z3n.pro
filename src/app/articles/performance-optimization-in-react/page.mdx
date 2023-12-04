@@ -1,0 +1,355 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+import Image from 'next/image'
+
+import performanceMail from './performance.jpg'
+
+export const article = {
+  author: 'Luka Petrovic',
+  date: '2023-12-02',
+  title: 'Performance Optimization in React',
+  description:
+    'Hey React fans! 🚀 We re breaking down cool tips and tricks to speed up your apps.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} />
+
+When you’re building a website for a company as ambitious as Planetaria, you need to make an impression. I wanted people to visit our website and see animations that looked more realistic than reality itself.
+
+To make this possible, we needed to squeeze every drop of performance out of the browser possible.
+
+<Image src={performanceMail} alt="" />
+
+## Introduction
+
+Hey there, fellow React developers! 👋 Are you ready to take your React apps to the next level? In the fast-paced world of web development, performance isn't just a nice-to-have, it's absolutely essential. Why, you ask? Because in the blink of an eye (literally!), users decide whether to stay on your app or bounce off to the next. That's where React, with its awesome capabilities, comes into play. But, as powerful as React is, it’s not a magic wand – it needs the right touch to truly shine.
+
+In this article, "Performance Optimization in React," we're going to embark on an exciting journey to unlock the full potential of your React applications. We'll start by exploring the intricacies of how React updates its DOM and why every millisecond counts in delivering a smooth user experience. Then, we'll dive into the ocean of optimization – from rendering strategies that save precious render cycles to state management tricks that keep your apps running like a well-oiled machine. We’ve got all sorts of goodies lined up, including code splitting, lazy loading, and much more.
+
+So, whether you're just starting out with React or you're a seasoned veteran, this article is your golden ticket to building faster, more efficient, and ultimately more engaging React applications. Let’s get those apps zooming! 🚀
+
+## Understanding Performance in React
+
+Welcome to the core of React's performance magic - the DOM and the [Virtual DOM](https://legacy.reactjs.org/docs/faq-internals.html)! 🌟 Let's break it down.
+
+### React and the DOM
+
+Imagine the DOM (Document Object Model) as a tree of elements that represent your webpage. When something changes, like a user interaction or data update, the whole tree might need a refresh. In traditional JavaScript, this can be a slow and tedious process. But React? It changes the game entirely.
+
+### The Magic of the Virtual DOM
+
+React uses this super cool concept called the [Virtual DOM](https://legacy.reactjs.org/docs/faq-internals.html), a lightweight copy of the real DOM. Here’s how it works:
+
+- **Step 1**: React creates a Virtual DOM snapshot each time your app’s state changes.
+- **Step 2**: Instead of updating the real DOM directly, React first updates this Virtual DOM.
+- **Step 3**: React then compares the updated Virtual DOM with a pre-update version (this process is known as 'diffing').
+- **Step 4**: Only the differences (or the changes) are rendered to the real DOM.
+- **Voila!**: This selective updating is what makes React so fast and efficient.
+
+### What Does Good Performance Look Like?
+
+In a React web app, good performance means:
+
+- **Speedy Updates**: Quick and efficient updates to the DOM, minimizing user wait times.
+- **Smooth Interactions**: Seamless user interactions without lag, regardless of the complexity of the app.
+- **Optimal Resource Use**: Efficient use of memory and processing power, which is crucial for users with less powerful devices or slow internet connections.
+
+By harnessing the power of the Virtual DOM, React gives us the tools to build incredibly fast and responsive applications. But it's not just about React doing its thing; it's also about how we, as developers, use it. In the upcoming sections, we'll explore the strategies and practices to optimize our React apps, ensuring they run at their peak performance. Ready to make your React apps fly? 🚀
+
+## Identifying Performance Issues
+
+Before diving into optimization techniques, it's crucial to identify where the performance bottlenecks lie in your React application. Let's explore some tools and techniques that will help us uncover these hidden performance hiccups.
+
+### Using React Developer Tools
+
+React Developer Tools is an essential browser extension for any React developer. It provides insights into your React component tree, including props, state, and performance.
+
+- **Profiling**: The Profiler tab allows you to record render times of the components, helping you spot the ones that take longer to render.
+- **Installation and Usage**: [React Developer Tools on GitHub](https://github.com/facebook/react-devtools)
+
+### Google Lighthouse
+
+Google Lighthouse is a powerful tool for performance auditing. It's not React-specific but provides valuable insights for web performance optimization.
+
+- **Performance Metrics**: Lighthouse generates a report with metrics like First Contentful Paint (FCP) and Time to Interactive (TTI), crucial for understanding overall web performance.
+- **Getting Started**: [Google Lighthouse Guide](https://developers.google.com/web/tools/lighthouse)
+
+### Pinpointing Slow Components
+
+Identifying slow or inefficient components is key to optimizing your React app. Here are some tips:
+
+- **Look for Complex Components**: Components with complex logic or large amounts of data can be the culprits.
+- **Monitor Component Updates**: Use React Developer Tools to monitor how often components update and how long they take to render.
+
+### Additional Tools
+
+There are other tools and libraries that can aid in performance analysis:
+
+- **Web Vitals**: A library by Google to measure core web vitals. [Web Vitals on GitHub](https://github.com/GoogleChrome/web-vitals)
+- **Why Did You Render**: A tool that notifies you when a component unnecessarily re-renders. [Why Did You Render on GitHub](https://github.com/welldone-software/why-did-you-render)
+
+By utilizing these tools and techniques, you can effectively identify performance issues in your React application. This is the first step towards a more efficient and faster React app. In the next sections, we'll dive into how to tackle these issues head-on!
+
+## Performance Optimization
+
+Achieving optimal performance in React apps involves several strategies, especially when it comes to rendering. Let's dive into some effective ways to optimize the rendering process in functional components.
+
+### Rendering Optimization with React.memo
+
+React.memo is a higher-order component that memoizes your functional component. It's perfect for preventing unnecessary re-renders.
+
+**When to Use**: Apply React.memo when you have components that render often with the same props.
+
+```jsx
+const MyComponent = React.memo(function MyComponent(props) {
+  // render using props
+})
+```
+
+### Conditional Rendering
+
+Efficiently render components only when needed. Avoid rendering heavy components that are not currently needed in the UI.
+
+```jsx
+{
+  shouldShowComponent && <HeavyComponent />
+}
+```
+
+### Using Fragment
+
+Using React.Fragment helps prevent adding unnecessary DOM nodes, which can improve performance.
+
+```jsx
+<>
+  <ComponentOne />
+  <ComponentTwo />
+</>
+```
+
+## Optimizing Props and State
+
+Proper management of props and state can significantly impact the performance of your React application. Here are some examples to guide you:
+
+### Avoid Passing Large Objects or Arrays as Props
+
+Passing large objects or arrays directly as props can cause performance issues, especially if these props cause frequent re-renders.
+
+- **Bad**:
+
+  ```jsx
+  const largeData = /* large array or object */;
+
+  return <MyComponent data={largeData} />;
+  ```
+
+- **Good**:
+
+  ```jsx
+  import { useCallback } from 'react'
+
+  const largeData = /* large array or object */;
+
+  const processData = useCallback(() => {
+     // Process largeData here
+  }, [largeData]); // Dependency array
+
+  return <MyComponent processData={processData} />;
+  ```
+
+### Memoizing Props with useMemo
+
+When you have computationally expensive calculations based on props, consider using [useMemo](https://react.dev/reference/react/useMemo) to memoize the result.
+
+- **Bad**:
+
+  ```jsx
+  const MyComponent = ({ data }) => {
+    const result = data.map((item) => {
+      // Expensive calculations here
+    })
+
+    return <div>{result}</div>
+  }
+  ```
+
+- **Good**:
+
+  ```jsx
+  import { useMemo } from 'react'
+
+  const MyComponent = ({ data }) => {
+    const result = useMemo(() => {
+      return data.map((item) => {
+        // Expensive calculations here
+      })
+    }, [data])
+
+    return <div>{result}</div>
+  }
+  ```
+
+### Using useCallback for Callbacks
+
+Passing callbacks to child components can lead to unnecessary re-renders if those callbacks change on every render.
+
+- **Bad**:
+
+  ```jsx
+  const MyComponent = () => {
+    const [count, setCount] = useState(0)
+
+    const handleClick = () => {
+      setCount(count + 1)
+    }
+
+    return <ChildComponent onClick={handleClick} />
+  }
+  ```
+
+- **Good**:
+
+  ```jsx
+  import { useCallback } from 'react'
+
+  const MyComponent = () => {
+    const [count, setCount] = useState(0)
+
+    const handleClick = useCallback(() => {
+      setCount(count + 1)
+    }, [count])
+
+    return <ChildComponent onClick={handleClick} />
+  }
+  ```
+
+Implementing these rendering optimization techniques can greatly improve the performance of React applications. In the following sections, we'll explore more ways to enhance your app's efficiency and responsiveness.
+
+## Code Splitting and Lazy Loading
+
+One of the most effective strategies to improve the load time and performance of React applications is through code splitting and lazy loading. This approach allows you to load only the necessary code at the right time.
+
+### Dynamic Component Imports with React.lazy and Suspense
+
+[React.lazy](https://react.dev/reference/react/lazy) and [Suspense](https://react.dev/reference/react/Suspense) enable you to dynamically import components and render them lazily, which means they are loaded only when needed.
+
+- **Using React.lazy**:
+
+  ```jsx
+  import React, { Suspense } from 'react'
+
+  const LazyComponent = React.lazy(() => import('./LazyComponent'))
+
+  function MyComponent() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <LazyComponent />
+      </Suspense>
+    )
+  }
+  ```
+
+**When to Use**: Ideal for components that are not immediately required on initial render, such as modals, dialogs, or tabs that are not visible at first.
+
+### Code Splitting for Specific Routes
+
+When using routing in your application (like with React Router), you can split code at the route level. This means different chunks of code get loaded depending on the route the user navigates to.
+
+**Example with React Router:**
+
+```jsx
+import React, { Suspense } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+const Home = React.lazy(() => import('./Home'))
+const About = React.lazy(() => import('./About'))
+
+function App() {
+  return (
+    <Router>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </Switch>
+      </Suspense>
+    </Router>
+  )
+}
+```
+
+**Benefit**: This technique significantly improves the initial load time by reducing the size of the initial JavaScript bundle that the browser needs to load.
+
+By leveraging code splitting and lazy loading, you can greatly enhance the user experience by ensuring that users download only the code they need, when they need it.
+
+## Optimizing Lists and Keys
+
+Handling large lists and collections in React can be challenging in terms of performance. Efficient use of keys and virtual rendering can dramatically improve the responsiveness of your application.
+
+### Efficient Use of `key` in Lists
+
+The `key` prop in React is crucial for helping the library identify which items have changed, been added, or been removed.
+
+- **Best Practices**:
+
+  - Use unique and stable keys for list items to prevent unnecessary re-renders.
+  - Avoid using indexes as keys if the list can reorder, as this can lead to performance issues and bugs.
+
+- **Example**:
+
+  ```jsx
+  const myList = items.map((item) => <ListItem key={item.id} data={item} />)
+  ```
+
+- **Why It's Important**: A proper key ensures that React can track each element efficiently, leading to better performance, especially during updates.
+  Virtual Rendering for Long Lists
+
+### Virtual Rendering for Long Lists
+
+For lists with a large number of elements, virtual rendering can significantly improve performance by only rendering items that are currently visible in the viewport.
+
+- **Using react-window**:
+  [react-window](https://github.com/bvaughn/react-window) is a popular library for virtualizing long lists and tables in React.
+  It renders only the items that fit in the current view, reducing the amount of DOM nodes created and managed.
+  Example with react-window:
+
+```jsx
+import { FixedSizeList as List } from 'react-window'
+
+const Row = ({ index, style }) => <div style={style}>Row {index}</div>
+
+const MyList = ({ itemCount }) => (
+  <List height={150} itemCount={itemCount} itemSize={35} width={300}>
+    {Row}
+  </List>
+)
+```
+
+- **Benefits**: This approach drastically reduces the number of DOM nodes, improving rendering performance and reducing memory usage.
+
+By implementing these techniques, you can handle large lists more efficiently in your React applications, ensuring smooth updates and interactions.
+
+## Conclusion
+
+In this journey through React performance optimization, we've covered a variety of techniques that can significantly enhance the speed and responsiveness of your applications:
+
+- **Rendering Optimization**: Using `React.memo` and conditional rendering to avoid unnecessary re-renders.
+- **Props and State Management**: Optimizing the way we handle props and state, especially with large datasets.
+- **Code Splitting and Lazy Loading**: Utilizing `React.lazy` and `Suspense` for dynamic component imports and route-based code splitting.
+- **Efficient List Rendering**: Implementing efficient key usage and virtual rendering with libraries like `react-window`.
+
+Performance is not just an afterthought; it's a critical part of the development process. Starting with a performance-first mindset ensures that your applications are not only functional but also efficient and user-friendly.
+
+### References
+
+- [React.memo](https://react.dev/reference/react/memo)
+- [React Developer Tools](https://reactjs.org/docs/optimizing-performance.html#profiling-components-with-the-devtools-profiler)
+- [Code Splitting in React](https://react.dev/reference/react/lazy)
+- [Virtualizing large lists with react-window](https://reactjs.org/docs/optimizing-performance.html#virtualize-long-lists)
+
+By implementing these practices from the start, you can build React applications that are not only powerful and feature-rich but also smooth and efficient. Happy coding!
