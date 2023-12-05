@@ -1,5 +1,6 @@
 import { Container } from '@/components/Container'
 import {
+  DocumentIcon,
   GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
@@ -35,6 +36,11 @@ const links = [
     href: 'https://www.instagram.com/lucapetro/',
     label: 'Instagram',
     icon: InstagramIcon,
+  },
+  {
+    href: 'https://read.cv/lukapetro',
+    label: 'Curriculum',
+    icon: DocumentIcon,
   },
 ]
 
@@ -89,7 +95,7 @@ export default function Page() {
           </p>
         </div>
       </Container>
-      <Container className="mt-12 md:mt-14">
+      <Container className="mt-6 md:mt-10">
         <ul className="flex w-full flex-col items-center justify-center space-y-6 ">
           {links.map(({ href, label, icon: Icon }) => (
             <SocialLink key={href} href={href} icon={Icon}>
