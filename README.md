@@ -1,6 +1,6 @@
-# Spotlight
+# z3n
 
-Spotlight is a [Tailwind UI](https://tailwindui.com) site template built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
+🚀 Welcome to z3n! We're blending la dolce vita with lines of code to create digital magic
 
 ## Getting started
 
