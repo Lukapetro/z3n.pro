@@ -13,7 +13,7 @@ const projects = [
     name: 'Sunny',
     description:
       'An app for renting and sharing beach umbrellas via a secondary market.',
-    link: { href: '#', label: 'github.com' },
+    link: { href: 'https://www.sunnyapp.xyz/', label: 'sunnyapp.xyz' },
     logo: logoSunny,
   },
   {
