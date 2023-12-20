@@ -1,0 +1,42 @@
+import { ArticleLayout } from '@/components/ArticleLayout'
+
+import Image from 'next/image'
+
+import performanceMail from './performance.jpg'
+
+export const article = {
+  author: 'Luka Petrovic',
+  date: '2023-12-20',
+  title: 'z3n X finance',
+  description:
+    'In this series of articles, i share all my knowledge about finance and investing. Im an idiot, so dont take my advice.',
+}
+
+export const metadata = {
+  title: article.title,
+  description: article.description,
+}
+
+export default (props) => <ArticleLayout article={article} {...props} /
+
+> I'm an idiot, this is a joke, it's for fun, don't take it seriously.
+
+# Table of Contents
+
+- Candlesticks charts
+- Risk management
+- Market microstructure
+- Horizontal support and resistance levels
+- Market structure
+- Time frames
+- Top down analysis
+- Retest
+- Entry triggers
+- Trade management
+- First trouble area
+- Pattern failure
+- Using Candlesticks Highs/Lows to trade reversals
+- Support/Resistance setup
+- Daily Open
+- Fibonacci
+- Relative Strength Index
