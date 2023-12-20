@@ -1,4 +1,5 @@
 import { ArticleLayout } from '@/components/ArticleLayout'
+import Link from 'next/link'
 
 export const article = {
   author: 'Luka Petrovic',
@@ -6,6 +7,7 @@ export const article = {
   title: 'z3n X finance',
   description:
     'In this series of articles, i share all my knowledge about finance and investing. Im an idiot, so dont take my advice.',
+  isDraft: true,
 }
 
 export const metadata = {
@@ -17,9 +19,14 @@ export default (props) => <ArticleLayout article={article} {...props} />
 
 > I'm an idiot, this is a joke, it's for fun, don't take it seriously.
 
-# Table of Contents
+## Table of Contents
 
-- Candlesticks charts
+- <Link
+    href={'/z3n-x-finance/candlestick-charts'}
+    className="transition hover:text-orange-500 dark:hover:text-orange-400"
+  >
+    Candlesticks charts
+  </Link>
 - Risk management
 - Market microstructure
 - Horizontal support and resistance levels

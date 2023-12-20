@@ -2,14 +2,17 @@ import { type Metadata } from 'next'
 
 import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
+import { getAllArticles, type ArticleWithSlug } from '@/lib/articles'
 import { formatDate } from '@/lib/formatDate'
 
 function Article({ article }: { article: ArticleWithSlug }) {
   return (
     <article className="md:grid md:grid-cols-4 md:items-baseline">
       <Card className="md:col-span-3">
-        <Card.Title href={`/articles/${article.slug}`}>
+        <Card.Title
+          href={`/articles/${article.slug}`}
+          isDraft={article.isDraft}
+        >
           {article.title}
         </Card.Title>
         <Card.Eyebrow
@@ -21,7 +24,7 @@ function Article({ article }: { article: ArticleWithSlug }) {
           {formatDate(article.date)}
         </Card.Eyebrow>
         <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
+        {article.isDraft ? null : <Card.Cta>Read article</Card.Cta>}
       </Card>
       <Card.Eyebrow
         as="time"

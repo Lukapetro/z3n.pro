@@ -5,6 +5,7 @@ interface Article {
   description: string
   author: string
   date: string
+  isDraft?: boolean
 }
 
 export interface ArticleWithSlug extends Article {

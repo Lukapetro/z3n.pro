@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import clsx from 'clsx'
+import Link from 'next/link'
 
 function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -13,6 +13,12 @@ function ChevronRightIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     </svg>
   )
 }
+
+const Badge = ({ children }: { children: React.ReactNode }) => (
+  <span className="ml-2 inline-flex items-center rounded-md bg-gray-400/10 px-2 py-1 text-xs font-medium text-gray-400 ring-1 ring-inset ring-gray-400/20">
+    {children}
+  </span>
+)
 
 export function Card<T extends React.ElementType = 'div'>({
   as,
@@ -35,13 +41,26 @@ export function Card<T extends React.ElementType = 'div'>({
 
 Card.Link = function CardLink({
   children,
+  isDraft = false,
   ...props
-}: React.ComponentPropsWithoutRef<typeof Link>) {
+}: React.ComponentPropsWithoutRef<typeof Link> & {
+  isDraft: boolean
+}) {
   return (
     <>
-      <div className="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl" />
-      <Link {...props}>
-        <span className="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
+      <div
+        className={clsx(
+          'absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl',
+        )}
+      />
+      <Link href={isDraft ? '#' : props.href}>
+        <span
+          className={clsx(
+            'absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl',
+            isDraft && 'pointer-event-none cursor-not-allowed',
+          )}
+        />
+
         <span className="relative z-10">{children}</span>
       </Link>
     </>
@@ -52,15 +71,24 @@ Card.Title = function CardTitle<T extends React.ElementType = 'h2'>({
   as,
   href,
   children,
+  isDraft = false,
 }: Omit<React.ComponentPropsWithoutRef<T>, 'as' | 'href'> & {
   as?: T
   href?: string
+  isDraft?: boolean
 }) {
   let Component = as ?? 'h2'
 
   return (
     <Component className="text-base font-semibold tracking-tight text-zinc-800 dark:text-zinc-100">
-      {href ? <Card.Link href={href}>{children}</Card.Link> : children}
+      {href ? (
+        <Card.Link href={href} isDraft={isDraft}>
+          {children}
+        </Card.Link>
+      ) : (
+        children
+      )}
+      {isDraft && <Badge>Draft</Badge>}
     </Component>
   )
 }
