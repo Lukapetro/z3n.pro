@@ -43,7 +43,7 @@ Card.Link = function CardLink({
   children,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Link> & {
-  isDraft: boolean
+  isDraft?: boolean
 }) {
   return (
     <>
