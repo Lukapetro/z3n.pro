@@ -41,6 +41,7 @@ export function Card<T extends React.ElementType = 'div'>({
 
 Card.Link = function CardLink({
   children,
+  isDraft = false,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Link> & {
   isDraft?: boolean
@@ -52,11 +53,11 @@ Card.Link = function CardLink({
           'absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-zinc-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-zinc-800/50 sm:-inset-x-6 sm:rounded-2xl',
         )}
       />
-      <Link href={props.isDraft ? '#' : props.href}>
+      <Link href={isDraft ? '#' : props.href}>
         <span
           className={clsx(
             'absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl',
-            props.isDraft && 'pointer-event-none cursor-not-allowed',
+            isDraft && 'pointer-event-none cursor-not-allowed',
           )}
         />
 
